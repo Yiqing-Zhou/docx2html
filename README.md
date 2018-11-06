@@ -1,4 +1,9 @@
+Announcement
 =========
+
+This is a python3 version of PolicyStat's docx2html: https://github.com/PolicyStat/docx2html
+
+
 docx2html
 =========
 

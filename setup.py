@@ -25,7 +25,7 @@ def get_description():
 setup(
     name="docx2html",
     # Edit here and docx2html.__init__
-    version="0.2.3",
+    version="0.3.0",
     description="docx (OOXML) to html converter",
     author="Jason Ward",
     author_email="jason.louard.ward@gmail.com",
@@ -35,7 +35,7 @@ setup(
     packages=find_packages(),
     scripts=[],
     zip_safe=False,
-    install_requires=['lxml==2.2.4', 'pillow==1.7.7'],
+    install_requires=['lxml==4.2.5', 'pillow=5.3.0'],
     cmdclass={},
     classifiers=[
         "Development Status :: 3 - Alpha",
