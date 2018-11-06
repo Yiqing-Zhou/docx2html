@@ -208,7 +208,7 @@ def is_header(el, meta_data):
     num_words = len(
         etree.tostring(
             el,
-            encoding=unicode,
+            encoding='unicode',
             method='text',
         ).split(' ')
     )
@@ -260,7 +260,7 @@ def has_text(p):
     this is the case we do not want that tag interfering with things like
     lists. Detect if this tag has any content.
     """
-    return '' != etree.tostring(p, encoding=unicode, method='text').strip()
+    return '' != etree.tostring(p, encoding='unicode', method='text').strip()
 
 
 def is_last_li(li, meta_data, current_numId):
@@ -934,7 +934,7 @@ def build_list(li_nodes, meta_data):
         w_namespace = get_namespace(el, 'w')
         if el.tag == '%stbl' % w_namespace:
             new_el, visited_nodes = build_table(el, meta_data)
-            return etree.tostring(new_el), visited_nodes
+            return etree.tostring(new_el, encoding='unicode'), visited_nodes
         elif el.tag == '%sp' % w_namespace:
             return get_element_content(el, meta_data), [el]
         if has_text(el):
@@ -1093,14 +1093,14 @@ def build_tr(tr, meta_data, row_spans):
                         meta_data,
                     )
                     visited_nodes.extend(list_visited_nodes)
-                    texts.append(etree.tostring(list_el))
+                    texts.append(etree.tostring(list_el, encoding='unicode'))
                 elif td_content.tag == '%stbl' % w_namespace:
                     table_el, table_visited_nodes = build_table(
                         td_content,
                         meta_data,
                     )
                     visited_nodes.extend(table_visited_nodes)
-                    texts.append(etree.tostring(table_el))
+                    texts.append(etree.tostring(table_el, encoding='unicode'))
                 elif td_content.tag == '%stcPr' % w_namespace:
                     # Do nothing
                     visited_nodes.append(td_content)
@@ -1468,6 +1468,7 @@ def create_html(tree, meta_data):
         visited_nodes.append(el)
     result = etree.tostring(
         new_html,
+        encoding='unicode',
         method='html',
         with_tail=True,
     )
